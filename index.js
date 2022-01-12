@@ -75,7 +75,15 @@ app.get('/getpost/:id', (req, res) => {
     })
 })
 
-
+// UPDATE post
+app.get('/updatepost/:id', (req, res) => {
+    let newTitle = "New title";
+    let sql = `UPDATE posts SET title = '${newTitle}' WHERE id = ${req.params.id}`;
+    db.query(sql, (err, result) => {
+        console.log(result);
+        res.send('Post updated...');
+    })
+})
 
 app.listen(300, ()=>{
     console.log(`Server started on port 3000`);

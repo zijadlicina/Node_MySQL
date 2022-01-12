@@ -65,6 +65,15 @@ app.get('/getposts', (req, res) => {
         res.send('Posts fetched...');
     })
 })
+// SELECT single post/record
+app.get('/getpost/:id', (req, res) => {
+    let sql = `SELECT * FROM posts WHERE id = ${req.params.id}`;
+    db.query(sql, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        res.send('Post fetched...');
+    })
+})
 
 
 
